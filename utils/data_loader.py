@@ -37,6 +37,9 @@ def parse_sql_dump(file_path: str) -> List[Dict[str, Any]]:
     
     matches = re.findall(insert_pattern, content)
     
+    # Limit to 50 records if requested
+    matches = matches[:50]
+    
     for match in matches:
         voter = {}
         for i, col in enumerate(columns):
@@ -57,7 +60,8 @@ def parse_sql_dump(file_path: str) -> List[Dict[str, Any]]:
     if len(voters) == 0:
         voters = parse_sql_alternative(content, columns)
     
-    return voters
+    # Final limit to ensure we only return 50 rows as requested
+    return voters[:50]
 
 
 def parse_sql_alternative(content: str, columns: List[str]) -> List[Dict[str, Any]]:
