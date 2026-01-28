@@ -1,0 +1,9 @@
+langchain>=0.3.0
+langchain-openai
+langchain-community
+openai
+chromadb>=0.5.0
+streamlit
+python-dotenv
+pandas
+pydantic-settings
