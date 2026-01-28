@@ -1,0 +1,1 @@
+i want to make a rag the give me a questions answer from the sql database
