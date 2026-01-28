@@ -7,3 +7,4 @@ streamlit
 python-dotenv
 pandas
 pydantic-settings
+PyYAML==6.0.3

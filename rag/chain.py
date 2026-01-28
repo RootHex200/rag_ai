@@ -9,9 +9,9 @@ from typing import List, Dict, Any, Optional
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from langchain_openai import ChatOpenAI
-from langchain.chains import RetrievalQA
-from langchain.prompts import PromptTemplate
-from langchain.schema import Document
+from langchain_classic.chains import RetrievalQA
+from langchain_core.prompts import PromptTemplate
+from langchain_core.documents import Document
 
 from config import (
     OPENAI_API_KEY,
@@ -37,8 +37,7 @@ class VoterRAGChain:
         self.vector_store = vector_store
         self.llm = ChatOpenAI(
             model=LLM_MODEL,
-            temperature=0.3,
-            openai_api_key=OPENAI_API_KEY
+            temperature=0.3
         )
         self.retriever = vector_store.get_retriever(k=TOP_K_RESULTS)
         self.qa_chain = self._create_qa_chain()
